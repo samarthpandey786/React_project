@@ -36,6 +36,7 @@ export class DBService{
     }
 
     async updatePost(slug,{title, content, featuredImage, status}){
+        // took the slug out side because it uses as identifier of the post as uniqueId here on which Id post we are gonna perform update mehtod:
         try{
             return await this.databases.updateDocument(
                 config.databaseId,
