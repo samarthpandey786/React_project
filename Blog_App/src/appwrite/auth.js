@@ -2,22 +2,25 @@ import config from "../config/config";
 import {Client, Account, ID} from "appwrite";
 
 // create a class 
+
+// This configuration tells your app where to send authentication requests and which Appwrite project to use.
+
 export class AuthService{
     client = new Client();
     account;
 
     constructor(){
-        this.client
+        this.client 
             .setEndpoint(config.appwriteurl)
             .setProject(config.projectId);
-            this.account = new Account(this.client);
+        this.account = new Account(this.client);
     }
 
-    async createAccount({email,password,name}){
+    async createAccount({email,password,name}){ // like a wrapper that uses for it purposes to use createaccount so we use directly createAccount method :
         try {
            const userAccount = await this.account.create(ID.unique(),email, password,name)
            if(userAccount){
-            return this.login({email,password})
+            return this.login({email,password})// called the login method here: 
            }else{
             return userAccount;
            }
@@ -56,7 +59,13 @@ export class AuthService{
 
 
 // create object of class AuthService
+// for other to not creating obj so we establish a defalut object so
+// access the functionalites or the auth service like eg:
+
+// authserviec.logout()...so on;
 const authservice = new AuthService() 
 
 export default authservice
+
+
  
