@@ -105,7 +105,7 @@ export class DBService{
     async uploadFile(file){
         try{
             return  await this.storage.createFile(
-                config.buckedId,
+                config.bucketId,
                 ID.unique(),
                 file,
             )
@@ -119,7 +119,7 @@ export class DBService{
     async deleteFile(fileId){
         try{
             return  await this.storage.deleteFile(
-                config.buckedId,
+                config.bucketId,
                 fileId,
             )
         }
@@ -131,7 +131,7 @@ export class DBService{
 
      previewfile(fileId){
         return this.storage.getFilePreview(
-            config.buckedId,
+            config.bucketId,
             fileId
         )
      }
