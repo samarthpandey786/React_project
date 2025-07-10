@@ -18,19 +18,19 @@ function Select({
                 ref={ref}
                 className={`px-3 py-2 rounded-lg bg-white text-black outline-none focus:bg-gray-50 duration-200 border border-gray-200 w-full ${className}`}
             >
-                {options?.map((opt) => (
+                {options?.map((opton) => (
                     <option 
-                        value={opt}
-                        key={opt}
+                        value={opton}
+                        key={opton}
                     >
-                        {opt}
+                        {opton}
                     </option>
                 ))}
             </select>
         </div>
     )
 }
-
+// it is used to maintain the proper flow of the code with the exact expected data types in the props
 // ✅ Prop validation
 Select.propTypes = {
     options: PropTypes.arrayOf(PropTypes.string).isRequired,

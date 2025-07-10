@@ -47,7 +47,7 @@ function Login() {
         {error && <p className='text-red-600 mt-8 text-center'>{error}</p>}
         <form onSubmit={handleSubmit(login)} className='mt-8'>
             <div className='space-y-5'>
-                <Input
+                <Input // component wala Input he ye for email input 
                     label="Email"
                     placeholder="Enter your email"
                     type="email"
@@ -60,7 +60,7 @@ function Login() {
                         
                     })}
                 />
-                <Input 
+                <Input // component wala inout he ye for the password input
                     label="Password"
                     placeholder="Enter your password"
                     type="password"
