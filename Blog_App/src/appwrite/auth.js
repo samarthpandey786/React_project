@@ -26,6 +26,7 @@ export class AuthService{
            }
         } catch (error) {
            console.log("appwrite service :: createAccount :: error",error);
+           
         }
     }
 
@@ -38,15 +39,19 @@ export class AuthService{
         }
     }
 
-    async getCurrentUser(){
-        try {
-            return await this.account.get();
-        } catch (error) {
-            console.log("appwrite service :: get currentUser:: error ",error);
-        }
-
-        return null;
+   async getCurrentUser() {
+  try {
+    return await this.account.get();
+  } catch (error) {
+    if (error.code === 401) {
+      // This is expected when user is not logged in
+      console.log("User not logged in yet. [401 Unauthorized]");
+    } else {
+      console.error("Appwrite service :: getCurrentUser :: error", error);
     }
+    return null; // Return null for unauthenticated users
+  }
+}
 
     async logout(){
         try {

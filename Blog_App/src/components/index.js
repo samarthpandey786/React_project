@@ -8,10 +8,12 @@ import Button from './Button'
 import RTE from "./RTE"
 import Singup from "./Signup";
 import Login from "./Login";
-import Post from "./Post";
-import PostFrom from "./post-form";
+import PostFrom from './post-form/Postfrom'
 import Postcards from "./Postcards";
-import AuthLayout from "./Authlayout"
+import AuthLayout from "./Authlayout";
+import Select from "./Select"
+
+
 
 export{
     Header,
@@ -24,8 +26,9 @@ export{
     RTE,
     Singup,
     Login,
-    Post,
     PostFrom,
     Postcards,
-    AuthLayout
+    AuthLayout,
+    Select
+    
 }
