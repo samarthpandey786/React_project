@@ -1,5 +1,7 @@
 import {useRef , useEffect, useState} from 'react'
 import Trash from '../icons/Trash';
+import { setNewoffset } from '../utils';
+import { setZIndex } from '../utils';
 
 const NoteCard = ({ note }) => {
     const body = JSON.parse(note.body);
@@ -27,6 +29,8 @@ const NoteCard = ({ note }) => {
 
         document.addEventListener('mousemove', mouseMove)
         document.addEventListener('mouseup', mouseUp)
+
+        setZIndex(cardRef.current);
         
     }
     
@@ -40,15 +44,14 @@ const NoteCard = ({ note }) => {
         mouseStartPos.x = e.clientX;
         mouseStartPos.y = e.clientY;
 
-        setposition({
-            x:cardRef.current.offsetLeft - mouseMoveDir.x,
-            y:cardRef.current.offsetTop - mouseMoveDir.y,
-        })
+        const newPosition = setNewoffset(cardRef.current, mouseMoveDir);
+
+        setposition(newPosition)
 
         
 };
 
-const mouseUp = () => {
+        const mouseUp = () => {
             document.removeEventListener("mousemove", mouseMove);
             document.removeEventListener("mouseup", mouseUp);
         
@@ -77,7 +80,9 @@ const mouseUp = () => {
             className="bg-inherit border-none w-full h-full resize-none text-base focus:bg-inherit focus:outline-none p-3"
             style={{color:colors.colorText}}
             defaultValue={body}
-            onInput={() =>{cardgrow(textarearef)}}>
+            onInput={() =>{cardgrow(textarearef)}}
+            onFocus={() => {setZIndex(cardRef.current)}}>
+            
             </textarea>
         </div>
   
