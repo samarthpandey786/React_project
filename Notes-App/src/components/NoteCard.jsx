@@ -1,10 +1,14 @@
 import {useRef , useEffect, useState} from 'react'
 import Trash from '../icons/Trash';
-import { setNewoffset } from '../utils';
+import Spinner from '../icons/Spinner';
+import { setNewoffset, bodyparser } from '../utils';
 import { setZIndex } from '../utils';
+import {db} from '../appwrite/databases'
 
 const NoteCard = ({ note }) => {
-    const body = JSON.parse(note.body);
+    const [saving, setSaving] = useState(false);
+    const keyupTimer = useRef(null)
+    const body = bodyparser(note.body);
     const [position, setposition] = useState( JSON.parse(note.position));
     const colors = JSON.parse(note.colors);
 
@@ -54,8 +58,34 @@ const NoteCard = ({ note }) => {
         const mouseUp = () => {
             document.removeEventListener("mousemove", mouseMove);
             document.removeEventListener("mouseup", mouseUp);
+
+        const newposition = setNewoffset(cardRef.current)
+        savedata("position", newposition)
         
 
+    }
+
+    const savedata = async (key, value) =>{
+        const payload = { [key] : JSON.stringify(value) }
+
+        try {
+            await db.notes.update(note.$id, payload)
+        } catch (error) {
+            console.error(error)
+        }
+        setSaving(false)
+    }
+
+    const handkeyUP = () => {
+        setSaving(true)
+
+        if (keyupTimer.current) {
+        clearTimeout(keyupTimer.current);
+        }
+
+        keyupTimer.current = setTimeout(() => {
+            savedata("body" , textarearef.current.value);
+        }, 2000);
     }
     return(
     
@@ -72,10 +102,19 @@ const NoteCard = ({ note }) => {
             onMouseDown={mouseDown}
             className="card-header rounded-t flex justify-between items-center p-[6px]" style={{backgroundColor:colors.colorHeader}}>
             <Trash/>
+            
+            {saving && (
+                <div className="card-saving">
+                    <Spinner color={colors.colorText}/>
+                    <span style={{ color: colors.colorText }}>Saving...</span>
+                </div> 
+            )}
+
         </div>
 
         <div className='text-area'>
             <textarea 
+            onKeyUp={handkeyUP}
             ref={textarearef}
             className="bg-inherit border-none w-full h-full resize-none text-base focus:bg-inherit focus:outline-none p-3"
             style={{color:colors.colorText}}
