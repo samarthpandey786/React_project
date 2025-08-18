@@ -2,7 +2,7 @@ Here's a cool README template for your React projects. You can copy and paste th
 
 ---
 
-# 🚀 React Projects by 
+# 🚀 React Projects
 
 Welcome to my React Projects repository!  
 Here you’ll find a collection of fun, modern, and practical React projects. Each project is built with JavaScript, React, and styled with CSS and HTML. Whether you’re a beginner looking to learn or an experienced dev seeking inspiration, you’ll find something useful here!
@@ -95,4 +95,5 @@ Happy Coding! 🚀
 ---
 
 Would you like me to update your README.md file with this content? If yes, let me know if you want any customization or if you want to add your email or other contact info!
+
 
