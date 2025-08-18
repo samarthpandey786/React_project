@@ -1,16 +1,19 @@
 import {useRef , useEffect, useState} from 'react'
-import Trash from '../icons/Trash';
+import DeleteButton from './DeleteButton';
 import Spinner from '../icons/Spinner';
 import { setNewoffset, bodyparser } from '../utils';
 import { setZIndex } from '../utils';
 import {db} from '../appwrite/databases'
+import { useContext } from 'react';
+import { Notecontext } from '../context/NoteContext';
 
-const NoteCard = ({ note }) => {
+const NoteCard = ({ note , setNotes }) => {
     const [saving, setSaving] = useState(false);
     const keyupTimer = useRef(null)
     const body = bodyparser(note.body);
     const [position, setposition] = useState( JSON.parse(note.position));
     const colors = JSON.parse(note.colors);
+    const {setselectedNote} = useContext(Notecontext)
 
     let mouseStartPos = { x: 0, y: 0 };
     const cardRef = useRef(null);
@@ -18,6 +21,7 @@ const NoteCard = ({ note }) => {
     const textarearef = useRef(null)
     useEffect(()=>{
         cardgrow(textarearef)
+        setZIndex(cardRef.current)
     },[])
 
    const cardgrow = () => {
@@ -27,16 +31,18 @@ const NoteCard = ({ note }) => {
 };
 
 
-    const mouseDown = (e) =>{
-        mouseStartPos.x = e.clientX
-        mouseStartPos.y = e.clienty
+  const mouseDown = (e) => {
+    if (e.target.classList.contains("card-header")) {
+        mouseStartPos.x = e.clientX;
+        mouseStartPos.y = e.clientY;
 
-        document.addEventListener('mousemove', mouseMove)
-        document.addEventListener('mouseup', mouseUp)
+        document.addEventListener("mousemove", mouseMove);
+        document.addEventListener("mouseup", mouseUp);
 
         setZIndex(cardRef.current);
-        
+        setselectedNote(note)
     }
+};
     
     const mouseMove = (e) => {
         const mouseMoveDir = {
@@ -61,6 +67,7 @@ const NoteCard = ({ note }) => {
 
         const newposition = setNewoffset(cardRef.current)
         savedata("position", newposition)
+       
         
 
     }
@@ -101,7 +108,7 @@ const NoteCard = ({ note }) => {
         <div 
             onMouseDown={mouseDown}
             className="card-header rounded-t flex justify-between items-center p-[6px]" style={{backgroundColor:colors.colorHeader}}>
-            <Trash/>
+            <DeleteButton noteId={note.$id}/>
             
             {saving && (
                 <div className="card-saving">
@@ -120,7 +127,11 @@ const NoteCard = ({ note }) => {
             style={{color:colors.colorText}}
             defaultValue={body}
             onInput={() =>{cardgrow(textarearef)}}
-            onFocus={() => {setZIndex(cardRef.current)}}>
+            onFocus={() => {
+                        setZIndex(cardRef.current)
+                        setselectedNote(note)
+
+            }}>
             
             </textarea>
         </div>
