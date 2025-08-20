@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types';
 
 function Button({
-    BtnText,
+    children,
     type = "button",
     bgColor = "bg-blue-600",
     textColor = "text-white",
@@ -10,20 +10,18 @@ function Button({
     ...props
 }) {
   return (
-    <div>
-      <button
-        type={type} // ✅ Correct use
-        className={`px-4 py-2 rounded-lg ${bgColor} ${textColor} ${className}`}
-        {...props}
-      >
-        {BtnText}
-      </button>
-    </div>
+    <button
+      type={type}
+      className={`px-4 py-2 rounded-lg ${bgColor} ${textColor} ${className}`}
+      {...props}
+    >
+      {children}
+    </button>
   );
 }
 
 Button.propTypes = {
-  BtnText: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
   type: PropTypes.string,
   bgColor: PropTypes.string,
   textColor: PropTypes.string,

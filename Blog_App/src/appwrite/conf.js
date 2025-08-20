@@ -15,26 +15,24 @@ export class DBService{
         this.storage = new Storage(this.client);
     }
 
-    async createPost({title, slug, content, featuredImage, status , userId}){
-        try {
-            return await this.databases.createDocument(
-                config.databaseId,
-                config.collectionId,
-                ID.unique(),
-                {
-                    title,
-                    slug,
-                    content,
-                    featuredImage,
-                    status,
-                    userId
-                }
-            )
-
-        } catch (error) {
-            console.log("Appwrite service :: createPost :: error",error);
-        }
-    }
+   async createPost({ title, content, featuredImage, status, userId }) {
+  try {
+    return await this.databases.createDocument(
+      config.databaseId,
+      config.collectionId,
+      ID.unique(),
+      {
+        title,
+        content,
+        featuredImage,
+        status,
+        userId
+      }
+    );
+  } catch (error) {
+    console.log("Appwrite service :: createPost :: error", error);
+  }
+}
 
     async updatePost(slug,{title, content, featuredImage, status}){
         // took the slug out side because it uses as identifier of the post as uniqueId here on which Id post we are gonna perform update mehtod:
@@ -130,12 +128,13 @@ export class DBService{
         }
     }
 
-     previewfile(fileId){
-        return this.storage.getFilePreview(
-            config.bucketId,
-            fileId
-        )
-     }
+    previewfile(fileId) {
+  if (!fileId) return null;
+  return this.storage.getFileView(config.bucketId, fileId);
+}
+        
+     
+     
 }
 
 // defined the object as DB:

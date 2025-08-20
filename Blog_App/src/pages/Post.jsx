@@ -4,9 +4,11 @@ import appwriteService from '../appwrite/conf';
 import { Button, Container } from "../components";
 import parse from "html-react-parser";
 import { useSelector } from "react-redux";
+import img from '../assets/react-logo.svg'; // Assuming you have a fallback image
+
 
 export default function Post() {
-    const [post, setPost] = useState(null);
+    const [post, setPost] = useState("");
     const { slug } = useParams();
     const navigate = useNavigate();
 
@@ -31,15 +33,28 @@ export default function Post() {
             }
         });
     };
+   console.log(
+  "Preview URL:",
+  post.featuredImage ? appwriteService.previewfile(post.featuredImage) : img
+);
+
+
+
+     console.log("Post featuredImage:", post.featuredImage);
 
     return post ? (
         <div className="py-8">
             <Container>
                 <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
                     <img
-                        src={appwriteService.previewfile(post.featuredImage)}
-                        alt={post.title}
-                        className="rounded-xl"
+                        src={
+                                post.featuredImage
+                                ? appwriteService.previewfile(post.featuredImage) 
+                                : "/assets/react-logo.svg"
+                            }
+                           
+                            alt={post.title}
+                         className="rounded-xl"
                     />
 
                     {isAuthor && (

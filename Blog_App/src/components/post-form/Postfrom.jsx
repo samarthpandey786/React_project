@@ -22,7 +22,7 @@ function Postfrom({post}) {
 
   const submit = async(data)=>{
     if(post){
-      const file = data.image[0] ? service.uploadFile(data.image[0]) : null
+      const file = data.image[0] ? await service.uploadFile(data.image[0]) : null;
 
       if(file){
         service.deleteFile(post.featuredImage)
@@ -37,13 +37,12 @@ function Postfrom({post}) {
     }else{
       const file = await service.uploadFile(data.image[0])
 
-        if(file){
-          const fileId =  file.$id
-          data.featuredImage - fileId
-          const DBPost =  await service.createPost({
-            ...data,
-            userID: userdata.$id,
-          })
+        if (file) {
+      const DBPost = await service.createPost({
+        ...data,
+        featuredImage: file.$id, // ✅ FIX: correctly assign uploaded fileId
+        userId: userdata.$id,    // ✅ FIX: your service expects userId (not userID)
+      });
           if(DBPost){
             navigate(`/post/${DBPost.$id}`)
           }
