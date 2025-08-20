@@ -20,9 +20,10 @@ export class DBService{
             return await this.databases.createDocument(
                 config.databaseId,
                 config.collectionId,
-                slug,
+                ID.unique(),
                 {
                     title,
+                    slug,
                     content,
                     featuredImage,
                     status,

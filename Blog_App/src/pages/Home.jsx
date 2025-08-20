@@ -1,5 +1,5 @@
 import React , {useEffect, useState} from 'react';
-import { DBService } from '../appwrite/conf';
+import DBService  from '../appwrite/conf';
 import { useNavigate, useParams  } from 'react-router-dom';
 import { Container, Postcards } from '../components';
 
@@ -35,7 +35,7 @@ function Home() {
             <div className='flex flex-wrap'>
                 {posts.map((post)=>(
                     <div key={post.$id} className='p-2 w-1/4'>
-                        <Postcards{...post}/>
+                        <Postcards {...post}/>
                     </div>
                 ))}
             </div>

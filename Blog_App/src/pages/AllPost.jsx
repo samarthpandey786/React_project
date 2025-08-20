@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { DBService } from '../appwrite/conf'
+import  DBService from '../appwrite/conf'
 import { Container, Postcards } from '../components'
 
 function AllPost() {
