@@ -16,7 +16,7 @@ function Logoutbtn() {
     }
   return (
    
-      <button className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded transition-colors duration-200"
+      <button className="bg-red-500 hover:bg-green-800 text-white font-semibold py-2 px-4 rounded-xl transition-colors duration-200"
       onClick={logouthandler}>
         Logout
       </button>

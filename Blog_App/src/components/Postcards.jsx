@@ -8,11 +8,11 @@ function Postcards({$id , title , featuredImage}) {
     
   return (
     <Link to={`/post/${$id}`}>
-      <div className='w-full bg-gray-100 rounded-xl p-4'>
+      <div className='w-full bg-gradient-to-r from-gray-800 via-gray-900 to-black rounded-xl p-4'>
         <div className='w-full justify-center mb-4'>
           <img src={DBService.previewfile(featuredImage)} alt={title} className='rounded-xl ' />
         </div>
-        <h2 className='text-xl font-bold'
+        <h2 className='text-xl font-bold text-gray-400 hover:text-emerald-300 transition-all duration-300 truncate'
         >{title}</h2>
       </div>
     </Link>

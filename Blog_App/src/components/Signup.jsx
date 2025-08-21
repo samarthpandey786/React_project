@@ -1,10 +1,11 @@
-import React, {useState} from 'react'
-import authservice from '../appwrite/auth'
-import { Link, useNavigate } from 'react-router-dom'
-import { login } from '../store/AuthSlice'
-import { Button, Input, Logo } from './index'
-import { useDispatch } from 'react-redux'
-import { useForm } from 'react-hook-form'
+import React, { useState } from "react";
+import authservice from "../appwrite/auth";
+import { Link, useNavigate } from "react-router-dom";
+import { login } from "../store/AuthSlice";
+import { Button, Input, Logo } from "./index";
+import { useDispatch } from "react-redux";
+import { useForm } from "react-hook-form";
+import { motion } from "framer-motion";
 
 function Signup() {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ function Signup() {
       if (user) {
         const currentUser = await authservice.getCurrentUser();
         if (currentUser) {
-          dispatch(login({ userData: currentUser }));  // ✅ wrap in object
+          dispatch(login({ userData: currentUser }));
           navigate("/");
         }
       }
@@ -30,60 +31,84 @@ function Signup() {
   };
 
   return (
-    <div className="flex items-center justify-center">
-      <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}>
-        <div className="mb-2 flex justify-center">
+    <div className="flex items-center justify-center min-h-screen w-full bg-gradient-to-r from-gray-600 via-gray-800 to-black ">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9, y: 30 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="mx-auto w-full max-w-md bg-gray-900/80 backdrop-blur-lg shadow-2xl rounded-2xl p-8 border border-gray-700"
+      >
+        {/* Logo */}
+        <div className="mb-4 flex justify-center">
           <span className="inline-block w-full max-w-[100px]">
             <Logo width="100%" />
           </span>
         </div>
-        <h2 className="text-center text-2xl font-bold leading-tight">Sign up to create account</h2>
-        <p className="mt-2 text-center text-base text-black/60">
-          Already have an account?&nbsp;
+
+        {/* Title */}
+        <h2 className="text-center text-3xl font-bold text-gray-100">
+          Create Account
+        </h2>
+        <p className="mt-2 text-center text-sm text-gray-400">
+          Already have an account?{" "}
           <Link
             to="/login"
-            className="font-medium text-primary transition-all duration-200 hover:underline"
+            className="font-medium text-gray-200 hover:text-gray-100 transition-colors"
           >
             Sign In
           </Link>
         </p>
-        {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
 
-        <form onSubmit={handleSubmit(create)}>
-          <div className='space-y-5'>
-            <Input
-              label="Full Name"
-              placeholder="Enter your full name"
-              {...register("name", { required: true })}
-            />
-            <Input
-              label="Email"
-              placeholder="Enter your email"
-              type="email"
-              {...register("email", {
-                required: true,
-                validate: {
-                  matchPatern: (value) =>
-                    /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
-                    "Email address must be a valid address",
-                }
-              })}
-            />
-            <Input
-              label="Password"
-              type="password"
-              placeholder="Enter your password"
-              {...register("password", { required: true })}
-            />
-            <Button type="submit" className="w-full">
-  Create Account
-</Button>
+        {/* Error */}
+        {error && <p className="text-red-500 mt-6 text-center">{error}</p>}
 
-          </div>
+        {/* Form */}
+        <form onSubmit={handleSubmit(create)} className="mt-8 space-y-5">
+          <Input
+            label="Full Name"
+            placeholder="Enter your full name"
+            className="bg-gray-800 border border-gray-600 text-gray-200 placeholder-gray-400 focus:ring-2 focus:ring-gray-400 rounded-lg"
+            {...register("name", { required: true })}
+          />
+          <Input
+            label="Email"
+            placeholder="Enter your email"
+            type="email"
+            className="bg-gray-800 border border-gray-600 text-gray-200 placeholder-gray-400 focus:ring-2 focus:ring-gray-400 rounded-lg"
+            {...register("email", {
+              required: true,
+              validate: {
+                matchPatern: (value) =>
+                  /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
+                  "Email address must be valid",
+              },
+            })}
+          />
+          <Input
+            label="Password"
+            type="password"
+            placeholder="Enter your password"
+            className="bg-gray-800 border border-gray-600 text-gray-200 placeholder-gray-400 focus:ring-2 focus:ring-gray-400 rounded-lg"
+            {...register("password", { required: true })}
+          />
+
+          {/* Animated Button */}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.92 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <Button
+              type="submit"
+              className="w-full bg-gradient-to-r from-gray-700 via-gray-600 to-gray-500 text-white font-semibold py-2 px-4 rounded-lg shadow-lg hover:from-gray-500 hover:via-gray-400 hover:to-gray-300 transition-all duration-300"
+            >
+              Create Account
+            </Button>
+          </motion.div>
         </form>
-      </div>
+      </motion.div>
     </div>
   );
 }
 
-export default Signup
+export default Signup;

@@ -30,7 +30,7 @@ function Home() {
   }
 
   return (
-    <div className="w-full py-6">
+    <div className="w-full  py-6">
       <Container>
         {/* Masonry-like grid layout */}
         <div className="columns-2 md:columns-3 lg:columns-4 gap-2 space-y-2">

@@ -4,7 +4,7 @@ import appwriteService from "../appwrite/conf";
 import { Button, Container } from "../components";
 import parse from "html-react-parser";
 import { useSelector } from "react-redux";
-import img from "../assets/react-logo.svg";
+import Logo from '../components/Logo'
 
 export default function Post() {
   const [post, setPost] = useState("");
@@ -35,14 +35,14 @@ export default function Post() {
   return post ? (
     <article className="py-12 bg-gray-50">
       <Container>
-        <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200">
+        <div className="max-w-4xl mx-auto bg-gradient-to-r from-gray-800 via-gray-900 to-black text-gray-300 rounded-2xl shadow-lg overflow-hidden border border-gray-200">
           {/* Featured Image */}
           <div className="relative group">
             <img
               src={
                 post.featuredImage
                   ? appwriteService.previewfile(post.featuredImage)
-                  : img
+                  : <Logo/>
               }
               alt={post.title}
               className="w-full h-[400px] object-cover transition-transform duration-500 group-hover:scale-105"
@@ -64,7 +64,7 @@ export default function Post() {
           {/* Post Content */}
           <div className="p-8 lg:p-12">
             {/* Blog Title */}
-            <h1 className="text-4xl font-extrabold text-gray-900 mb-6 leading-snug tracking-tight">
+            <h1 className="text-4xl font-extrabold text-gray-400 mb-6 leading-snug tracking-tight">
               {post.title}
             </h1>
 
