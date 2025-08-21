@@ -4,6 +4,7 @@ import {Button , Input , Select , RTE} from "../index"
 import  service from '../../appwrite/conf';
 import { useNavigate, } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import appwriteService from '../../appwrite/conf';
 
 function Postfrom({post}) {
   const {register , handleSubmit , watch,
@@ -104,7 +105,7 @@ function Postfrom({post}) {
                 {post && (
                     <div className="w-full mb-4">
                         <img
-                            src={appwriteService.getFilePreview(post.featuredImage)}
+                            src={appwriteService.previewfile(post.featuredImage)}
                             alt={post.title}
                             className="rounded-lg"
                         />

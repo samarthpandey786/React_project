@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Container, PostFrom } from '../components';
-import { DBService } from '../appwrite/conf';
+import  DBService from '../appwrite/conf';
 import { useNavigate, useParams } from 'react-router-dom';
 
 
