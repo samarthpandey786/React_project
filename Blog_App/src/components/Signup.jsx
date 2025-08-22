@@ -53,7 +53,7 @@ function Signup() {
           Already have an account?{" "}
           <Link
             to="/login"
-            className="font-medium text-gray-200 hover:text-gray-100 transition-colors"
+            className="font-medium text-gray-200 hover:text-emerald-400 transition-colors duration-200"
           >
             Sign In
           </Link>
@@ -67,14 +67,14 @@ function Signup() {
           <Input
             label="Full Name"
             placeholder="Enter your full name"
-            className="bg-gray-800 border border-gray-600 text-gray-200 placeholder-gray-400 focus:ring-2 focus:ring-gray-400 rounded-lg"
+            className="bg-gray-800 border border-gray-600 font-mono text-gray-600 placeholder-gray-400 focus:ring-2 focus:ring-gray-400 rounded-lg"
             {...register("name", { required: true })}
           />
           <Input
             label="Email"
             placeholder="Enter your email"
             type="email"
-            className="bg-gray-800 border border-gray-600 text-gray-200 placeholder-gray-400 focus:ring-2 focus:ring-gray-400 rounded-lg"
+            className="bg-gray-800 border border-gray-600 font-mono text-gray-600 placeholder-gray-400 focus:ring-2 focus:ring-gray-400 rounded-lg"
             {...register("email", {
               required: true,
               validate: {
@@ -88,7 +88,7 @@ function Signup() {
             label="Password"
             type="password"
             placeholder="Enter your password"
-            className="bg-gray-800 border border-gray-600 text-gray-200 placeholder-gray-400 focus:ring-2 focus:ring-gray-400 rounded-lg"
+            className="bg-gray-800 border font-mono border-gray-600 text-gray-600 placeholder-gray-400 focus:ring-2 focus:ring-gray-400 rounded-lg"
             {...register("password", { required: true })}
           />
 

@@ -9,14 +9,14 @@ function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Logo + About */}
           <div className="flex flex-col justify-between">
-            <Link to="/" className="mb-4 inline-flex items-center">
+            <Link to="/" className="mb-4 inline-flex items-center pr-12 pb-4">
               <Logo width="120px" />
             </Link>
-            <p className="text-sm text-gray-400">
+            <p className="text-sm text-gray-400 pb-17">
               &copy; {new Date().getFullYear()} All Rights Reserved by{" "}
-              <span className="text-blue-400 font-semibold">DevUI</span>.
+              <span className="text-blue-400 font-semibold">MG</span>.
             </p>
-            <div className="flex gap-4 mt-4">
+            <div className="flex gap-4 mt-4 ">
               <a href="#" className="hover:text-blue-400 transition">
                 <FaTwitter size={20} />
               </a>
@@ -98,7 +98,7 @@ function Footer() {
 
         {/* Bottom Line */}
         <div className="border-t border-gray-700 mt-10 pt-6 text-center text-sm text-gray-500">
-          Made with ❤️ using React + Tailwind
+          Made with ❤️ + React + Tailwind
         </div>
       </div>
     </footer>

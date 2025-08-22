@@ -25,7 +25,7 @@ export class AuthService{
             return userAccount;
            }
         } catch (error) {
-           console.log("appwrite service :: createAccount :: error",error);
+          //  console.log("appwrite service :: createAccount :: error",error);
            
         }
     }
@@ -35,7 +35,7 @@ export class AuthService{
            return await this.account.createEmailPasswordSession(email, password);
         } 
         catch (error) {
-           console.log("appwrite service :: login :: error",error);
+          //  console.log("appwrite service :: login :: error",error);
         }
     }
 
@@ -45,9 +45,9 @@ export class AuthService{
   } catch (error) {
     if (error.code === 401) {
       // This is expected when user is not logged in
-      console.log("User not logged in yet. [401 Unauthorized]");
+      // console.log("User not logged in yet. [401 Unauthorized]");
     } else {
-      console.error("Appwrite service :: getCurrentUser :: error", error);
+      // console.error("Appwrite service :: getCurrentUser :: error", error);
     }
     return null; // Return null for unauthenticated users
   }
@@ -57,7 +57,7 @@ export class AuthService{
         try {
             await this.account.deleteSessions()
         } catch (error) {
-            console.log("appwrite serviec :: logout :: error",error);
+            // console.log("appwrite serviec :: logout :: error",error);
         }
     }
 }

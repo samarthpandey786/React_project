@@ -66,7 +66,7 @@ function Login() {
               label="Email"
               placeholder="Enter your email"
               type="email"
-              className="bg-white/20 border border-white/30 text-white placeholder-gray-200 focus:ring-2 focus:ring-emerald-600 rounded-lg"
+              className="bg-white/20 border border-white/30 text-black font-mono placeholder-gray-200 focus:ring-2 focus:ring-emerald-600 rounded-lg"
               {...register("email", {
                 required: true,
                 validate: {
@@ -82,7 +82,7 @@ function Login() {
               label="Password"
               placeholder="Enter your password"
               type="password"
-              className="bg-white/20 border border-white/30 text-white placeholder-gray-200 focus:ring-2 focus:ring-emerald-600 rounded-lg"
+              className="bg-white/20 border border-white/30 text-black placeholder-gray-200 focus:ring-2 focus:ring-emerald-600 rounded-lg"
               {...register("password", { required: true })}
             />
           </div>

@@ -18,11 +18,11 @@ function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white/30 backdrop-blur-md shadow-md">
       <Container>
-        <nav className="flex items-center justify-between py-3">
+        <nav className="flex items-center justify-between ">
           {/* Logo */}
-          <div className="flex items-center">
+          <div className="flex items-start pl-5 size-16 pt-2">
             <Link to="/">
-              <Logo width="70px" />
+              <Logo  />
             </Link>
           </div>
 

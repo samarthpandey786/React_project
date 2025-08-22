@@ -13,7 +13,7 @@ const dispatch = useDispatch()
 useEffect(()=>{
   authservice.getCurrentUser()
   .then((userData)=>{
-     console.log(">>> current user from Appwrite:", userData) 
+    //  console.log(">>> current user from Appwrite:", userData) 
      if(userData){
       dispatch(login({userData}))
      }else{
@@ -21,7 +21,7 @@ useEffect(()=>{
      }
   })
   .catch(()=>{
-    console.log("error:: authservice :: app.jsx")
+    // console.log("error:: authservice :: app.jsx")
   })
   .finally(()=>setloading(false))
 },[])
