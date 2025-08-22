@@ -48,10 +48,8 @@ Each project comes with clear instructions, clean code, and is easy to clone, ru
 ## 📦 Projects
 
 <!-- List your current projects here, for example: -->
-- **Todo App** – Simple and clean todo list with local storage support.
-- **Weather Dashboard** – Fetches weather data using an API and displays for different cities.
-- **Calculator** – Responsive calculator app with basic operations.
-- **Portfolio Website** – Personal portfolio made with React.
+- **Blog App** – complex and clean blog app with local storage support and appwrite support.
+- **Note App** - simple yet responsive and dynamic Note app with Drag and drop featuer of Notes.
 
 *(Add more details about each project as you grow!)*
 
@@ -95,5 +93,6 @@ Happy Coding! 🚀
 ---
 
 Would you like me to update your README.md file with this content? If yes, let me know if you want any customization or if you want to add your email or other contact info!
+
 
 
