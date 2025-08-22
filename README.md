@@ -75,16 +75,12 @@ If you have project ideas or improvements, open an issue or reach out!
 
 ---
 
-## 📝 License
-
-This repository is licensed under the MIT License.
-
 ---
 
 ## 📬 Contact
 
 - GitHub: [samarthpandey786](https://github.com/samarthpandey786)
-- Email: [YourEmail@example.com] (replace with your email)
+- Email: [Samarthpandey676@gmail.com] 
 
 ---
 
@@ -93,6 +89,7 @@ Happy Coding! 🚀
 ---
 
 Would you like me to update your README.md file with this content? If yes, let me know if you want any customization or if you want to add your email or other contact info!
+
 
 
 
