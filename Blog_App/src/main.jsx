@@ -14,6 +14,9 @@ import AllPosts from './pages/AllPost.jsx'
 import Home from './pages/Home.jsx'
 import AccountPage from './pages/AccountPage.jsx';
 import { Account } from 'appwrite'
+import HelpPage from './pages/HelpPage.jsx'
+import ContactUsPage from './pages/ContactUsPage.jsx'
+import About from './pages/AboutPage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -74,6 +77,18 @@ const router = createBrowserRouter([
         {
             path: "/account_page",
             element: <AccountPage/>
+        },
+        {
+            path: "/help",
+            element: <HelpPage/>
+        },
+        {
+            path: "/contact",
+            element: <ContactUsPage/>
+        },
+        {
+            path: "/About",
+            element: <About/>
         }
     ],
 },

@@ -1,11 +1,11 @@
 import React from 'react'
 
-const AccountPage = () => {
+const HelpPage = () => {
   return (
     <div className='text-white'>
-      Hello this is account page:
+      this is the Help page 
     </div>
   )
 }
 
-export default AccountPage
+export default HelpPage

@@ -45,7 +45,7 @@ function Footer() {
                 { name: "Account", path: "/account_page" },
                 { name: "Help", path: "/help" },
                 { name: "Contact Us", path: "/contact" },
-                { name: "Customer Support", path: "/support" },
+                { name: "About Us", path: "/About" },
               ].map((link) => (
                 <li key={link.name}>
                   <NavLink
