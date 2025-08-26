@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container, Logo, Logoutbtn } from "../index";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Menu, X } from "lucide-react"; // hamburger icons
 
@@ -34,13 +34,23 @@ function Header() {
               (item) =>
                 item.active && (
                   <li key={item.name} >
+                    <NavLink
+                     className={({ isActive }) =>
+                      ` px-5 py-2  transition-all duration-300 rounded-full hover:bg-emerald-400 ${
+                        isActive
+                          ? "text-gray-800  bg-emerald-400"
+                          : "text-gray-800 font-semibold"
+                      }`
+                    }
+                    to={item.slug}>
                     <button
                       onClick={() => navigate(item.slug)}
-                      className="px-5 py-2 rounded-full text-gray-800 font-medium hover:bg-emerald-400 hover:text-white transition-all duration-300"
+                      className=" text-gray-800 font-medium  hover:text-white transition-all duration-300"
                       
                     >
                       {item.name}
                     </button>
+                    </NavLink>
                   </li>
                 )
             )}
@@ -65,16 +75,24 @@ function Header() {
             {navItems.map(
               (item) =>
                 item.active && (
-                  <li key={item.name}>
+                  <li key={item.name} >
+                    <NavLink
+                     className={({ isActive }) =>
+                      ` px-5 py-2  transition-all duration-300 rounded-full hover:bg-emerald-400 ${
+                        isActive
+                          ? "text-gray-800  bg-emerald-400"
+                          : "text-gray-800 font-semibold"
+                      }`
+                    }
+                    to={item.slug}>
                     <button
-                      onClick={() => {
-                        navigate(item.slug);
-                        setMenuOpen(false);
-                      }}
-                      className="block w-full text-center px-5 py-2 rounded-full text-gray-800 font-medium hover:bg-emerald-400 hover:text-white transition-all duration-300"
+                      onClick={() => navigate(item.slug)}
+                      className=" text-gray-800 font-medium  hover:text-white transition-all duration-300"
+                      
                     >
                       {item.name}
                     </button>
+                    </NavLink>
                   </li>
                 )
             )}

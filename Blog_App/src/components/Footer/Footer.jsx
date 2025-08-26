@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { FaTwitter, FaInstagram, FaGithub, FaLinkedin } from "react-icons/fa";
 import Logo from "../Logo";
 
@@ -34,47 +34,36 @@ function Footer() {
           </div>
 
           {/* links */}
-          <div className="flex flex-row  gap-20">
+        <div className="flex flex-col gap-10">
           {/* Support */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider mb-6 text-gray-400">
+            <h3 className=" text-sm font-semibold uppercase tracking-wider mb-6 text-gray-400">
               Support
             </h3>
-            <ul className="space-y-3">
-              {["Account", "Help", "Contact Us", "Customer Support"].map(
-                (item) => (
-                  <li key={item}>
-                    <Link
-                      to="/"
-                      className="hover:text-white hover:pl-1 transition-all duration-300"
-                    >
-                      {item}
-                    </Link>
+            <ul className="flex flex-row gap-4 ">
+              {[
+                { name: "Account", path: "/account_page" },
+                { name: "Help", path: "/help" },
+                { name: "Contact Us", path: "/contact" },
+                { name: "Customer Support", path: "/support" },
+              ].map((link) => (
+                <li key={link.name}>
+                  <NavLink
+                    to={link.path}
+                    className={({ isActive }) =>
+                      `hover:text-white hover:pl-1 transition-all duration-300 ${
+                        isActive
+                          ? "text-emerald-600 hover:text-emerald-200 text-xl"
+                          : "text-gray-400 font-semibold"
+                      }`
+                    }
+                  >
+                    {link.name}
+                  </NavLink>
                   </li>
-                )
-              )}
-            </ul>
-          </div>
+                  ))}
+              </ul>
 
-          {/* Legal */}
-          <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider mb-6 text-gray-400">
-              Legal
-            </h3>
-            <ul className="space-y-3">
-              {["Terms & Conditions", "Privacy Policy", "Licensing"].map(
-                (item) => (
-                  <li key={item}>
-                    <Link
-                      to="/"
-                      className="hover:text-white hover:pl-1 transition-all duration-300"
-                    >
-                      {item}
-                    </Link>
-                  </li>
-                )
-              )}
-            </ul>
           </div>
         </div>
           </div>

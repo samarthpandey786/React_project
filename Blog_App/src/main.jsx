@@ -12,6 +12,8 @@ import EditPost from './pages/EditPost.jsx';
 import Post from './pages/Post.jsx';
 import AllPosts from './pages/AllPost.jsx'
 import Home from './pages/Home.jsx'
+import AccountPage from './pages/AccountPage.jsx';
+import { Account } from 'appwrite'
 
 const router = createBrowserRouter([
   {
@@ -69,6 +71,10 @@ const router = createBrowserRouter([
             path: "/post/:slug",
             element: <Post />,
         },
+        {
+            path: "/account_page",
+            element: <AccountPage/>
+        }
     ],
 },
 ])
