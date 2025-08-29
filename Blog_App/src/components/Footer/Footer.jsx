@@ -51,7 +51,7 @@ function Footer() {
                   <NavLink
                     to={link.path}
                     className={({ isActive }) =>
-                      `hover:text-white hover:pl-1 transition-all duration-300 ${
+                      `hover:pl-1 transition-all duration-300 ${
                         isActive
                           ? "text-emerald-600 hover:text-emerald-200 text-xl"
                           : "text-gray-400 font-semibold"
