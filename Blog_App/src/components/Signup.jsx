@@ -24,6 +24,9 @@ function Signup() {
           navigate("/");
         }
       }
+      else{
+        alert("Signup failed, user not created enter the valid details:")
+      }
     } catch (error) {
       console.error("Signup error:", error);
       setError(error.message);

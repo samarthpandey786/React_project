@@ -22,6 +22,9 @@ function Login() {
         if (userData) dispatch(authLogin(userData));
         navigate("/");
       }
+      else{
+        alert("Login failed, user not found enter the valid id and password:")
+      }
     } catch (error) {
       setError(error.message);
     }
