@@ -63,21 +63,22 @@ export default function Post() {
 
           {/* Post Content */}
           <div className="p-8 lg:p-12">
-            {/* Blog Title */}
+            
             <h1 className="text-4xl font-extrabold text-gray-400 mb-6 leading-snug tracking-tight">
               {post.title}
             </h1>
 
-            {/* SEO-friendly meta info */}
+           
             <div className="flex items-center gap-3 mb-8 text-sm text-gray-500">
-              <span>✍️ {userData?.name || "Anonymous"}</span>
+              {/* <span>✍️ {post.name || "Anonymous"}</span> */}
+              <span >Posted on</span>
               <span>•</span>
               <time dateTime={post.$createdAt}>
                 {new Date(post.$createdAt).toLocaleDateString()}
               </time>
             </div>
 
-            {/* Main Blog Content */}
+            
             <div className="prose prose-lg prose-gray max-w-none leading-relaxed">
               {parse(post.content)}
             </div>
