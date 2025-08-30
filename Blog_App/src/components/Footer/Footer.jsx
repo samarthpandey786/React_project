@@ -42,10 +42,13 @@ function Footer() {
             </h3>
             <ul className="flex flex-row gap-4 ">
               {[
+                
+                { name: "Home", path: "/" },
                 { name: "Account", path: "/account_page" },
                 { name: "Help", path: "/help" },
                 { name: "Contact Us", path: "/contact" },
                 { name: "About Us", path: "/About" },
+                
               ].map((link) => (
                 <li key={link.name}>
                   <NavLink
