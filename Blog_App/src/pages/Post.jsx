@@ -70,7 +70,7 @@ export default function Post() {
 
            
             <div className="flex items-center gap-3 mb-8 text-sm text-gray-500">
-              {/* <span>✍️ {post.name || "Anonymous"}</span> */}
+              {/* <span>✍️ {post.name || "update name from edit's"}</span> */}
               <span >Posted on</span>
               <span>•</span>
               <time dateTime={post.$createdAt}>
