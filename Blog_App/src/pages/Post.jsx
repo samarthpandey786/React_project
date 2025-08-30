@@ -5,6 +5,7 @@ import { Button, Container } from "../components";
 import parse from "html-react-parser";
 import { useSelector } from "react-redux";
 import Logo from '../components/Logo'
+import authservice from "../appwrite/auth";
 
 export default function Post() {
   const [post, setPost] = useState("");
@@ -70,12 +71,18 @@ export default function Post() {
 
            
             <div className="flex items-center gap-3 mb-8 text-sm text-gray-500">
-              {/* <span>✍️ {post.name || "update name from edit's"}</span> */}
+              {/* <span>✍️ {userData?.name || "not found"}</span> */}
               <span >Posted on</span>
               <span>•</span>
-              <time dateTime={post.$createdAt}>
+              <time dateTime={post.$createdAt} >
                 {new Date(post.$createdAt).toLocaleDateString()}
               </time>
+              <br />
+              <span >Updated on</span>
+              <span>•</span>
+              <time datetime={post.$updatedAt}>
+                {new Date(post.$updatedAt).toLocaleDateString()}
+                </time>
             </div>
 
             
